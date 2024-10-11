@@ -463,10 +463,10 @@ class pdb(defense):
             print(f'Clean  Mode: Test without defensive')            
             clean_test_loss_avg_over_batch, \
             bd_test_loss_avg_over_batch, \
-            ra_test_loss_avg_over_batch, \
+            _, \
             test_acc, \
             test_asr, \
-            test_ra = self.eval_step(
+            _ = self.eval_step(
                 model,
                 data_clean_loader,
                 data_bd_loader,
@@ -478,10 +478,10 @@ class pdb(defense):
             print(f'BD  Mode: Test with defensive')            
             bd_clean_test_loss_avg_over_batch, \
             bd_bd_test_loss_avg_over_batch, \
-            bd_ra_test_loss_avg_over_batch, \
+            _, \
             test_bd_acc, \
             test_bd_asr, \
-            bd_test_ra = self.eval_step(
+            _ = self.eval_step(
                 model_bd,
                 data_clean_loader,
                 data_bd_loader,
@@ -494,26 +494,20 @@ class pdb(defense):
                 # match with default metric in BackdoorBench
                 "clean_test_loss_avg_over_batch": bd_clean_test_loss_avg_over_batch,
                 "bd_test_loss_avg_over_batch": bd_bd_test_loss_avg_over_batch,
-                "ra_test_loss_avg_over_batch": bd_ra_test_loss_avg_over_batch,
                 "test_acc": test_bd_acc,
                 "test_asr": test_bd_asr,
-                "test_ra": bd_test_ra,
                 
                 # without defensive
                 "clean_test_loss_avg_over_batch_wo_defensive": clean_test_loss_avg_over_batch,
                 "bd_test_loss_avg_over_batch_wo_defensive": bd_test_loss_avg_over_batch,
-                "bd_ra_test_loss_avg_over_batch_wo_defensive": ra_test_loss_avg_over_batch,
                 "test_acc_wo_defensive": test_acc,
                 "test_asr_wo_defensive": test_asr,
-                "test_ra_wo_defensive": test_ra,
 
                 # with defensive
                 "clean_test_loss_avg_over_batch_w_defensive": bd_clean_test_loss_avg_over_batch,
                 "bd_test_loss_avg_over_batch_w_defensive": bd_bd_test_loss_avg_over_batch,
-                "ra_test_loss_avg_over_batch_w_defensive": bd_ra_test_loss_avg_over_batch,
                 "test_acc_w_defensive": test_bd_acc,
                 "test_asr_w_defensive": test_bd_asr,
-                "test_ra_w_defensive": bd_test_ra,
             })
 
 
@@ -614,16 +608,16 @@ class pdb(defense):
             device=self.args.device,
             verbose=0,
         )
-        ra_test_loss_avg_over_batch = ra_metrics['test_loss_avg_over_batch']
-        test_ra = ra_metrics['test_acc']
+        _ = ra_metrics['test_loss_avg_over_batch']
+        _ = ra_metrics['test_acc']
         bd_test_dataloader.dataset.wrapped_dataset.getitem_all_switch = False  # switch back
 
         return clean_test_loss_avg_over_batch, \
                 bd_test_loss_avg_over_batch, \
-                ra_test_loss_avg_over_batch, \
+                _, \
                 test_acc, \
                 test_asr, \
-                test_ra
+                _
 
 
     def defense(self,result_file):
