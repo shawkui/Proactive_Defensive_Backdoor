@@ -1,5 +1,7 @@
 # Mitigating Backdoor Attacks by Injecting Proactive Defensive Backdoor
 
+[English](./README.md) | [简体中文](./README_cn.md)
+
 [Paper](https://arxiv.org/abs/2405.16112) | [Citation](#citation)
 
 ---
@@ -76,9 +78,15 @@ If you find our work valuable and use it in your research, please cite our paper
 ```
 
 ---
-## Ack
+## Acknowledgment
 Our codes heavily depend on [BackdoorBench](https://github.com/SCLBD/BackdoorBench), *"BackdoorBench: A Comprehensive Benchmark of Backdoor Learning"*. It may be the best repo for backdoor research. Please consider leaving a :star: on their repository.
 
+
+## Warning
+
+The current implementation of PDB uses a wrapper to add a defensive trigger to the defensive model and reverses the output. As a result, the defensive model is incompatible with the analysis module in BackdoorBench.
+
+To load the defense results, you must use the provided wrapper to process the defensive output accordingly.
 
 ---
 
