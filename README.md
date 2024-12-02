@@ -41,7 +41,7 @@ To get started with the project:
 
 2. Install the required dependencies:
    ```bash
-   pip install -r requirements.txt
+   bash sh/install.sh
    ```
 
 ---
