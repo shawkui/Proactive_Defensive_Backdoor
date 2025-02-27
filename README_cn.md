@@ -41,7 +41,11 @@
 
 2. 安装所需的依赖项：
    ```bash
-   pip install -r requirements.txt
+   bash sh/install.sh
+   ```
+3. 初始化文件夹：
+   ```bash
+   bash sh/init_folders.sh
    ```
 
 ---
