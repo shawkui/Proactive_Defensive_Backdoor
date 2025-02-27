@@ -51,7 +51,6 @@ from utils.aggregate_block.dataset_and_transform_generate import get_input_shape
 from utils.save_load_attack import load_attack_result, save_defense_result
 from utils.bd_dataset_v2 import xy_iter, slice_iter
 import torchvision.transforms as transforms
-from analysis.visual_utils import plot_confusion_matrix
 from torch import Tensor
 
 class defensive_iter(torch.utils.data.dataset.Dataset):
