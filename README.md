@@ -43,6 +43,10 @@ To get started with the project:
    ```bash
    bash sh/install.sh
    ```
+3. Initialize folders:
+   ```bash
+   bash sh/init_folders.sh
+   ```
 
 ---
 
